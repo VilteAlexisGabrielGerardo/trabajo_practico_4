@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+    <meta charset="UTF-8">
+    <title>Docentes</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+	<body>
+	<div class="container-fluid">
+	 <header data-th-replace="~{/layouts/header :: header}"></header>
+	 <h2 th:text="${#strings.isEmpty(docente.legajo) ? 'Nuevo Docente' : 'Editar Docente'}"></h2>
+    <form th:action="@{/docentes/guardar}" th:object="${docente}" method="post">
+        <div class="mb-3">
+            <label for="legajo" class="form-label">Legajo</label>
+            <input type="text" class="form-control" id="legajo" th:field="*{legajo}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label for="anosExperiencia" class="form-label">Años de experiencia</label>
+            <input type="number" class="form-control" id="anosExperiencia" th:field="*{anosExperiencia}" required>
+        </div>
+        <div class="mb-3">
+            <label for="materia" class="form-label">Materia</label>
+            <input type="text" class="form-control" id="materia" th:field="*{materia}" required>
+        </div>
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="dni" th:field="*{dni}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    <a th:href="@{/docentes/listar}" class="btn btn-secondary mt-3">Salir</a>
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+    </div>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>

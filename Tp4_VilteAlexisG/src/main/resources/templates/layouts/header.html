@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+		<head th:fragment="head">
+		<meta charset="UTF-8">
+		<title data-th-text="${titulo}"></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link th:rel="stylesheet" data-th-href="@{/css/estilos.css}"> 
+		<link th:rel="stylesheet" data-th-ref="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		</head>
+		<body>
+		<header th:fragment="header" class="bg-primary text-white text-center py-4">
+		        <div class="container-fluid">
+		            <a class="navbar-brand">
+		               <img src="/images/logounju.jpg" class="img-fluid" alt="logounju">
+		            </a>
+		            <h1 class="titulo" >UNJu</h1>
+		            <h1 class="titulo" >Universidad Nacional de Jujuy</h1>
+		            <p class="lead">En cada presente, una oportunidad</p>
+		        </div>
+				    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+				  <div class="container-fluid">
+				    <div class="collapse navbar-collapse" >
+				      <div class="navbar-nav">
+				        <a class="nav-link active" aria-current="page" href="https://www.unju.edu.ar/">Inicio</a>
+				        <a class="nav-link" href="https://www.fi.unju.edu.ar/institucional/historia.html">Acerca de</a>
+				        <a class="nav-link" href="https://www.fi.unju.edu.ar/17-carreras.html">Carreras</a>
+				        <a class="nav-link" href="https://noticias.unju.edu.ar/">Noticias</a>
+				        <a class="nav-link" href="https://fi.unju.edu.ar/servicios/telefonos.html">Contacto</a>
+				      </div>
+				    </div>
+				  </div>
+				</nav>
+		</header>
+		</body>
+</html>
