@@ -1,30 +1,24 @@
 package ar.edu.unju.fi.model;
 
 public class Carrera {
-    private int id; 
-    private String codigo;
+    private int id;
     private String nombre;
-    private int cantidadAnios;
-    private String estado;
-
-    public Carrera() {
-        // Constructor
+    private int anio;
+    public Carrera() {}
+    
+    public Carrera(int id, String nombre, int anio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.anio = anio;
     }
 
+    // Getters y Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -35,28 +29,11 @@ public class Carrera {
         this.nombre = nombre;
     }
 
-    public int getCantidadAnios() {
-        return cantidadAnios;
+    public int getAnio() {
+        return anio;
     }
 
-    public void setCantidadAnios(int cantidadAnios) {
-        this.cantidadAnios = cantidadAnios;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-	public Object getDuracion() {
-	
-		return null;
-	}
-
-	public void setDuracion(Object duracion) {
-		
-	}
 }

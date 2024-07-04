@@ -11,12 +11,6 @@ import ar.edu.unju.fi.model.Docente;
 @RequestMapping("/docentes")
 public class DocenteController {
 	
-	/*
-	@SuppressWarnings("unused")
-	@Autowired
-	private Materia materia; 
-	*/
-	
     @GetMapping("/listar")
     public String listarDocentes(Model model) {
         model.addAttribute("docentes", CollectionDocente.listar());
@@ -32,16 +26,18 @@ public class DocenteController {
     @PostMapping("/guardar")
     public ModelAndView guardarDocente(@ModelAttribute Docente docente) {
         CollectionDocente.agregar(docente);
-        ModelAndView mav = new ModelAndView("docentes");
-        mav.addObject("docentes", CollectionDocente.listar());
+        ModelAndView mav = new ModelAndView("redirect:/docentes/listar");
         return mav;
     }
 
     @GetMapping("/editar/{legajo}")
     public String editarDocenteForm(@PathVariable String legajo, Model model) {
         Docente docente = CollectionDocente.buscar(legajo);
-        model.addAttribute("docente", docente);
-        return "docente";
+        if (docente != null) {
+            model.addAttribute("docente", docente);
+            return "docente";
+        }
+        return "redirect:/docentes/listar";
     }
 
     @PostMapping("/modificar")

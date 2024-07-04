@@ -1,22 +1,16 @@
 package ar.edu.unju.fi.controller;
-//import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import ar.edu.unju.fi.Collections.CollectionMateria;
 import ar.edu.unju.fi.model.Materia;
 
 @Controller
 @RequestMapping("/materias")
 public class MateriaController {
-	/*
-	@SuppressWarnings("unused")
-	@Autowired
-	private Materia materia; 
-	*/
-	 
+
     @GetMapping("/listar")
     public String listarMaterias(Model model) {
         model.addAttribute("materias", CollectionMateria.listar());
@@ -40,8 +34,12 @@ public class MateriaController {
     @GetMapping("/editar/{codigo}")
     public String editarMateriaForm(@PathVariable String codigo, Model model) {
         Materia materia = CollectionMateria.buscar(codigo);
-        model.addAttribute("materia", materia);
-        return "materia";
+        if (materia != null) {
+            model.addAttribute("materia", materia);
+            return "materia";
+        } else {
+            return "redirect:/materias/listar";
+        }
     }
 
     @PostMapping("/modificar")
