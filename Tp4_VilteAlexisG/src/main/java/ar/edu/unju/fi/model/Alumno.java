@@ -1,21 +1,22 @@
 package ar.edu.unju.fi.model;
 
+import java.util.List;
+
 public class Alumno {
     private String nombre;
     private String apellido;
     private int dni;
-    private String carrera;
+    private List<String> carreras; 
+    public Alumno() {
+    }
 
-	public Alumno(String nombre, String apellido, int dni, String carrera) {
+    // Constructor con los parámetros necesarios
+    public Alumno(String nombre, String apellido, int dni, List<String> carreras) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.carrera = carrera;
-	}
-
-
-	public Alumno() {
-	}
+        this.carreras = carreras;
+    }
 
     public String getNombre() {
         return nombre;
@@ -41,12 +42,11 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public String getCarrera() {
-        return carrera;
+    public List<String> getCarreras() {
+        return carreras;
     }
 
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
+    public void setCarreras(List<String> carreras) {
+        this.carreras = carreras;
     }
 }
-

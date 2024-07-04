@@ -7,6 +7,11 @@ import ar.edu.unju.fi.model.Alumno;
 public class CollectionAlumno {
     private static List<Alumno> alumnos = new ArrayList<>();
 
+    public static List<Alumno> getAlumnos() {
+       
+        return alumnos;
+    }
+
     public static void agregar(Alumno alumno) {
         alumnos.add(alumno);
     }
@@ -25,13 +30,15 @@ public class CollectionAlumno {
     public static void modificar(Alumno alumnoModificado) {
         for (Alumno alumno : alumnos) {
             if (alumno.getDni() == alumnoModificado.getDni()) {
+
                 alumno.setNombre(alumnoModificado.getNombre());
                 alumno.setApellido(alumnoModificado.getApellido());
-                alumno.setCarrera(alumnoModificado.getCarrera());
+                alumno.setCarreras(alumnoModificado.getCarreras());
+                return; 
             }
         }
+        alumnos.add(alumnoModificado);
     }
-
     public static List<Alumno> listar() {
         return new ArrayList<>(alumnos);
     }

@@ -1,15 +1,15 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head>
+<head>
     <meta charset="UTF-8">
     <title>Materia</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
-	<body>
-	<div class="container-fluid">
-	 <header data-th-replace="~{/layouts/header :: header}"></header>
-	  <h2 th:text="${#strings.isEmpty(materia.codigo) ? 'Nueva Materia' : 'Editar Materia'}"></h2>
-    <form th:action="@{/materias/guardar}" th:object="${materia}" method="post">
+<body>
+<div class="container-fluid">
+    <header data-th-replace="~{/layouts/header :: header}"></header>
+    <h2 th:text="${#strings.isEmpty(materia.codigo) ? 'Nueva Materia' : 'Editar Materia'}"></h2>
+    <form data-th-action="${action == 'guardar'} ? @{/materias/guardar} : @{/materias/modificar}" th:object="${materia}" class="w-50 m-auto my-5 p-3 border border-dark" method="post">
         <div class="mb-3">
             <label for="codigo" class="form-label">Código</label>
             <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
@@ -19,18 +19,30 @@
             <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" required>
+            <label for="curso" class="form-label">Curso</label>
+            <input type="text" class="form-control" id="curso" th:field="*{curso}" required>
         </div>
         <div class="mb-3">
-            <label for="duracion" class="form-label">Duración(meses)</label>
-            <input type="number" class="form-control" id="duracion" th:field="*{duracion}" required>
+            <label for="cantidadh" class="form-label">Cantidad de horas</label>
+            <input type="number" class="form-control" id="cantidadh" th:field="*{cantidadh}" required>
+        </div>
+        <div class="mb-3">
+            <label for="modalidad" class="form-label">Modalidad</label>
+            <input type="text" class="form-control" id="modalidad" th:field="*{modalidad}" required>
+        </div>
+        <div class="mb-3">
+            <label for="docente" class="form-label">Docente</label>
+            <input type="text" class="form-control" id="docente" th:field="*{docente}" required>
+        </div>
+        <div class="mb-3">
+            <label for="carrera" class="form-label">Carrera</label>
+            <input type="text" class="form-control" id="carrera" th:field="*{carrera}" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
     <a th:href="@{/materias/listar}" class="btn btn-secondary mt-3">Cancelar</a>
-	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-    </div>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
 </body>
 </html>
